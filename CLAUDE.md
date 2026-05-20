@@ -488,7 +488,9 @@ const opacity = interpolate(frame, [0, 20], [0, 1], { extrapolateRight: 'clamp' 
 
 ### Media
 
-**Always use `<OffthreadVideo>`, never `<video>`** — Remotion requires its own video component for frame-accurate rendering. Using a raw `<video>` tag will not render correctly.
+**Never use a raw HTML `<video>` tag** — Remotion requires its own component for frame-accurate rendering.
+
+The toolkit's templates use `<OffthreadVideo>` and `<Audio>` from the `remotion` package. Stick with these for consistency with existing templates. Upstream Remotion now also documents `<Video>` and `<Audio>` from the newer `@remotion/media` package (see `.claude/skills/remotion-official/`) — those add trim props, pitch shifting via `toneFrequency`, and richer loop behavior. Migrate per-template only if you need those features; both APIs render correctly.
 
 ```tsx
 <OffthreadVideo src={staticFile('demo.mp4')} />
