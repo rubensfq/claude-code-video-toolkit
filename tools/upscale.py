@@ -44,7 +44,7 @@ from file_transfer import (
 )
 
 # Docker image for RunPod endpoint
-REALESRGAN_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-realesrgan:v2"
+REALESRGAN_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-runpod-realesrgan:latest"
 REALESRGAN_TEMPLATE_NAME = "video-toolkit-realesrgan-v2"
 REALESRGAN_ENDPOINT_NAME = "video-toolkit-upscale"
 

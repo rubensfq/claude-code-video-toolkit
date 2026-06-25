@@ -57,7 +57,7 @@ from file_transfer import download_from_url, get_r2_payload_config
 
 
 RUNPOD_GRAPHQL_URL = "https://api.runpod.io/graphql"
-DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-flux2:latest"
+DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-runpod-flux2:latest"
 TEMPLATE_NAME = "video-toolkit-flux2"
 ENDPOINT_NAME = "video-toolkit-flux2"
 ENV_VAR_NAME = "RUNPOD_FLUX2_ENDPOINT_ID"

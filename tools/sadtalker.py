@@ -46,7 +46,7 @@ from file_transfer import (
 )
 
 # Docker image for RunPod endpoint
-SADTALKER_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-sadtalker:latest"
+SADTALKER_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-runpod-sadtalker:latest"
 SADTALKER_TEMPLATE_NAME = "video-toolkit-sadtalker"
 SADTALKER_ENDPOINT_NAME = "video-toolkit-sadtalker"
 
