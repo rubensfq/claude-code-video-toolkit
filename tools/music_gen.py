@@ -90,7 +90,7 @@ ACEMUSIC_API_URL = "https://api.acemusic.ai/v1/chat/completions"
 ACEMUSIC_MODELS_URL = "https://api.acemusic.ai/v1/models"
 
 RUNPOD_GRAPHQL_URL = "https://api.runpod.io/graphql"
-DOCKER_IMAGE = "ghcr.io/conalmullan/video-toolkit-acestep:latest"
+DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-acestep:latest"
 TEMPLATE_NAME = "video-toolkit-acestep"
 ENDPOINT_NAME = "video-toolkit-acestep"
 ENV_VAR_NAME = "RUNPOD_ACESTEP_ENDPOINT_ID"

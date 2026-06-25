@@ -724,7 +724,7 @@
       ],
       "endpoints": {
         "propainter": {
-          "image": "ghcr.io/conalmullan/video-toolkit-propainter:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-propainter:latest",
           "dockerfile": "docker/runpod-propainter/",
           "envVar": "RUNPOD_ENDPOINT_ID",
           "operations": [
@@ -733,7 +733,7 @@
           "estimatedCost": "$0.05-0.30 per video"
         },
         "qwen-edit": {
-          "image": "ghcr.io/conalmullan/video-toolkit-qwen-edit:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-qwen-edit:latest",
           "dockerfile": "docker/runpod-qwen-edit/",
           "envVar": "RUNPOD_QWEN_EDIT_ENDPOINT_ID",
           "operations": [
@@ -742,7 +742,7 @@
           "estimatedCost": "$0.01-0.02 per image"
         },
         "realesrgan": {
-          "image": "ghcr.io/conalmullan/video-toolkit-realesrgan:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-realesrgan:latest",
           "dockerfile": "docker/runpod-realesrgan/",
           "envVar": "RUNPOD_UPSCALE_ENDPOINT_ID",
           "operations": [
@@ -751,7 +751,7 @@
           "estimatedCost": "$0.01-0.05 per image"
         },
         "sadtalker": {
-          "image": "ghcr.io/conalmullan/video-toolkit-sadtalker:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-sadtalker:latest",
           "dockerfile": "docker/runpod-sadtalker/",
           "envVar": "RUNPOD_SADTALKER_ENDPOINT_ID",
           "operations": [
@@ -760,7 +760,7 @@
           "estimatedCost": "$0.02-0.15 per video"
         },
         "qwen3-tts": {
-          "image": "ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest",
           "dockerfile": "docker/runpod-qwen3-tts/",
           "envVar": "RUNPOD_QWEN3_TTS_ENDPOINT_ID",
           "operations": [
@@ -769,7 +769,7 @@
           "estimatedCost": "$0.005-0.10 per generation"
         },
         "flux2": {
-          "image": "ghcr.io/conalmullan/video-toolkit-flux2:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-flux2:latest",
           "dockerfile": "docker/runpod-flux2/",
           "envVar": "RUNPOD_FLUX2_ENDPOINT_ID",
           "operations": [
@@ -778,7 +778,7 @@
           "estimatedCost": "$0.01-0.03 per image"
         },
         "acestep": {
-          "image": "ghcr.io/conalmullan/video-toolkit-acestep:latest",
+          "image": "ghcr.io/rubensfq/video-toolkit-acestep:latest",
           "dockerfile": "docker/runpod-acestep/",
           "envVar": "RUNPOD_ACESTEP_ENDPOINT_ID",
           "operations": [

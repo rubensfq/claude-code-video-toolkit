@@ -59,7 +59,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent))
 
 # Docker image for RunPod endpoint
-QWEN3_TTS_DOCKER_IMAGE = "ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest"
+QWEN3_TTS_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest"
 QWEN3_TTS_TEMPLATE_NAME = "video-toolkit-qwen3-tts"
 QWEN3_TTS_ENDPOINT_NAME = "video-toolkit-qwen3-tts"
 

@@ -1285,7 +1285,7 @@ def process_with_cloud(
 # =============================================================================
 
 RUNPOD_GRAPHQL_URL = "https://api.runpod.io/graphql"
-PROPAINTER_DOCKER_IMAGE = "ghcr.io/conalmullan/video-toolkit-propainter:latest"
+PROPAINTER_DOCKER_IMAGE = "ghcr.io/rubensfq/video-toolkit-propainter:latest"
 PROPAINTER_TEMPLATE_NAME = "video-toolkit-propainter"
 PROPAINTER_ENDPOINT_NAME = "video-toolkit-dewatermark"
 

@@ -52,9 +52,9 @@ All tools use pre-built public images (no building required):
 
 | Tool | Image |
 |------|-------|
-| image_edit | `ghcr.io/conalmullan/video-toolkit-qwen-edit:latest` |
-| upscale | `ghcr.io/conalmullan/video-toolkit-realesrgan:latest` |
-| dewatermark | `ghcr.io/conalmullan/video-toolkit-propainter:latest` |
+| image_edit | `ghcr.io/rubensfq/video-toolkit-qwen-edit:latest` |
+| upscale | `ghcr.io/rubensfq/video-toolkit-realesrgan:latest` |
+| dewatermark | `ghcr.io/rubensfq/video-toolkit-propainter:latest` |
 
 Use `--setup-gpu AMPERE_16` for RTX 3080 or `--setup-gpu ADA_24` for RTX 4090.
 
@@ -76,9 +76,9 @@ Create one endpoint per tool you want to use:
 
 | Tool | Docker Image | GPU | Timeout |
 |------|--------------|-----|---------|
-| image_edit | `ghcr.io/conalmullan/video-toolkit-qwen-edit:latest` | 48GB+ (A6000, L40S, A100) | 300s |
-| upscale | `ghcr.io/conalmullan/video-toolkit-realesrgan:latest` | 24GB (RTX 3090/4090) | 300s |
-| dewatermark | `ghcr.io/conalmullan/video-toolkit-propainter:latest` | 24GB (RTX 3090/4090) | 3600s |
+| image_edit | `ghcr.io/rubensfq/video-toolkit-qwen-edit:latest` | 48GB+ (A6000, L40S, A100) | 300s |
+| upscale | `ghcr.io/rubensfq/video-toolkit-realesrgan:latest` | 24GB (RTX 3090/4090) | 300s |
+| dewatermark | `ghcr.io/rubensfq/video-toolkit-propainter:latest` | 24GB (RTX 3090/4090) | 3600s |
 
 Steps for each:
 

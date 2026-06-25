@@ -2,13 +2,13 @@
 # Generates speech from text with voice cloning and emotion control
 #
 # Build (from repo root):
-#   docker buildx build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest --push docker/runpod-qwen3-tts/
+#   docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest --push docker/runpod-qwen3-tts/
 #
 # Image size: ~19GB (includes ~11GB model weights: CustomVoice + Base + VoiceDesign)
 # Cold start: ~30s (no model download needed)
 #
 # Test locally:
-#   docker run --gpus all -p 8000:8000 ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest
+#   docker run --gpus all -p 8000:8000 ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest
 
 FROM runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
 

@@ -33,11 +33,11 @@ All images are public on GHCR — no authentication needed.
 
 | Tool | Docker Image | GPU | VRAM | Typical Cost |
 |------|-------------|-----|------|-------------|
-| image_edit | `ghcr.io/conalmullan/video-toolkit-qwen-edit:latest` | A6000/L40S | 48GB+ | ~$0.05-0.15/job |
-| upscale | `ghcr.io/conalmullan/video-toolkit-realesrgan:latest` | RTX 3090/4090 | 24GB | ~$0.01-0.05/job |
-| dewatermark | `ghcr.io/conalmullan/video-toolkit-propainter:latest` | RTX 3090/4090 | 24GB | ~$0.05-0.30/job |
-| sadtalker | `ghcr.io/conalmullan/video-toolkit-sadtalker:latest` | RTX 4090 | 24GB | ~$0.05-0.15/job |
-| qwen3_tts | `ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest` | ADA 24GB | 24GB | ~$0.01-0.05/job |
+| image_edit | `ghcr.io/rubensfq/video-toolkit-qwen-edit:latest` | A6000/L40S | 48GB+ | ~$0.05-0.15/job |
+| upscale | `ghcr.io/rubensfq/video-toolkit-realesrgan:latest` | RTX 3090/4090 | 24GB | ~$0.01-0.05/job |
+| dewatermark | `ghcr.io/rubensfq/video-toolkit-propainter:latest` | RTX 3090/4090 | 24GB | ~$0.05-0.30/job |
+| sadtalker | `ghcr.io/rubensfq/video-toolkit-sadtalker:latest` | RTX 4090 | 24GB | ~$0.05-0.15/job |
+| qwen3_tts | `ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest` | ADA 24GB | 24GB | ~$0.01-0.05/job |
 
 **Total monthly cost:** Rarely exceeds $10 even with heavy use.
 
@@ -217,8 +217,8 @@ All Dockerfiles live in `docker/runpod-*/`. Images use `runpod/pytorch` as the b
 
 Building for RunPod (from Apple Silicon Mac):
 ```bash
-docker buildx build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-<name>:latest docker/runpod-<name>/
-docker push ghcr.io/conalmullan/video-toolkit-<name>:latest
+docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-<name>:latest docker/runpod-<name>/
+docker push ghcr.io/rubensfq/video-toolkit-<name>:latest
 ```
 
 GHCR packages default to **private** — you must manually make them public for RunPod to pull them. Go to GitHub > Packages > Package Settings > Change Visibility.

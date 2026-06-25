@@ -1,7 +1,8 @@
 """Shared file transfer helpers for cloud GPU tools.
 
-Provides R2 upload/download with fallback to free services (litterbox, 0x0.st).
-Used by all cloud GPU tools to avoid duplicating file transfer logic.
+Provides R2 upload/download. Cloudflare R2 is required — cloud GPU tools will
+raise RuntimeError if R2 is not configured rather than falling back to public
+file hosting services.
 """
 from __future__ import annotations
 
@@ -97,74 +98,39 @@ def delete_from_r2(object_key: str) -> bool:
         return False
 
 
-def _upload_to_litterbox(file_path: str, file_name: str) -> str | None:
-    """Upload to litterbox.catbox.moe (200MB limit, 24h retention)."""
-    import subprocess
-    result = subprocess.run(
-        [
-            "curl", "-s",
-            "-F", "reqtype=fileupload",
-            "-F", "time=24h",
-            "-F", f"fileToUpload=@{file_path}",
-            "https://litterbox.catbox.moe/resources/internals/api.php",
-        ],
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
-    if result.returncode == 0:
-        url = result.stdout.strip()
-        if url.startswith("http"):
-            return url
-    return None
-
-
-def _upload_to_0x0(file_path: str, file_name: str) -> str | None:
-    """Upload to 0x0.st (512MB limit, 30 day retention)."""
-    import subprocess
-    result = subprocess.run(
-        ["curl", "-s", "-F", f"file=@{file_path}", "https://0x0.st"],
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
-    if result.returncode == 0:
-        url = result.stdout.strip()
-        if url.startswith("http"):
-            return url
-    return None
-
-
 def upload_to_storage(file_path: str, prefix: str) -> tuple[str | None, str | None]:
-    """Upload a file to temporary storage for cloud GPU job input.
+    """Upload a file to private R2 storage for cloud GPU job input.
 
-    Tries R2 first, falls back to litterbox (24h/200MB), then 0x0.st (30d/512MB).
+    Requires R2 to be configured via R2_ENDPOINT_URL, R2_ACCESS_KEY_ID,
+    R2_SECRET_ACCESS_KEY, and R2_BUCKET_NAME in .env. Cloud GPU jobs must not
+    upload files to public third-party services.
 
-    Returns (url, r2_key) where r2_key is set only for R2 uploads (for cleanup).
+    Returns (presigned_url, r2_key) on success. Raises RuntimeError if R2 is
+    not configured — configure R2 before using cloud GPU tools.
     """
+    client, config = get_r2_client()
+    if not client:
+        raise RuntimeError(
+            "R2 storage is required for cloud GPU tools but is not configured.\n"
+            "Add these to your .env file:\n"
+            "  R2_ENDPOINT_URL=https://<account>.r2.cloudflarestorage.com\n"
+            "  R2_ACCESS_KEY_ID=<key>\n"
+            "  R2_SECRET_ACCESS_KEY=<secret>\n"
+            "  R2_BUCKET_NAME=<bucket>\n"
+            "See docs/setup.md for Cloudflare R2 setup instructions."
+        )
+
     file_size = Path(file_path).stat().st_size
     file_name = Path(file_path).name
 
-    print(f"Uploading {file_name} ({file_size // 1024}KB)...", file=sys.stderr)
+    print(f"Uploading {file_name} ({file_size // 1024}KB) to R2...", file=sys.stderr)
 
     url, r2_key = upload_to_r2(file_path, prefix)
     if url:
         print(f"  Upload complete (R2)", file=sys.stderr)
         return url, r2_key
 
-    # Fall back to free services
-    for service_name, upload_func in [("litterbox", _upload_to_litterbox), ("0x0.st", _upload_to_0x0)]:
-        try:
-            url = upload_func(file_path, file_name)
-            if url:
-                print(f"  Upload complete ({service_name})", file=sys.stderr)
-                return url, None
-        except Exception as e:
-            print(f"  {service_name} failed: {e}", file=sys.stderr)
-            continue
-
-    print("All upload services failed", file=sys.stderr)
-    return None, None
+    raise RuntimeError(f"R2 upload failed for {file_name}. Check R2 credentials and bucket permissions.")
 
 
 def download_from_url(url: str, output_path: str, verbose: bool = True) -> bool:
