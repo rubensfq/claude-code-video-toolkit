@@ -518,4 +518,24 @@ if __name__ == "__main__":
     except ImportError:
         log("Warning: torch not imported for CUDA check")
 
+    # Pre-download all three models before accepting requests.
+    # Models land in HF_HOME (/runpod-volume/huggingface) which persists across
+    # warm starts on the same RunPod worker — subsequent starts skip the download.
+    log("Pre-downloading Qwen3-TTS models (skipped if already cached)...")
+    try:
+        from huggingface_hub import snapshot_download
+        import os
+        hf_home = os.environ.get("HF_HOME", "/runpod-volume/huggingface")
+        os.makedirs(hf_home, exist_ok=True)
+        for model_id in [
+            "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+            "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+            "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+        ]:
+            log(f"  Ensuring {model_id}...")
+            snapshot_download(model_id, cache_dir=hf_home)
+        log("All models ready.")
+    except Exception as e:
+        log(f"WARNING: model pre-download failed: {e} — will retry on first request")
+
     runpod.serverless.start({"handler": handler})

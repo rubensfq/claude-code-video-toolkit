@@ -1,11 +1,11 @@
-# Qwen3-TTS RunPod Serverless Worker (models baked in)
+# Qwen3-TTS RunPod Serverless Worker (models downloaded at startup)
 # Generates speech from text with voice cloning and emotion control
 #
 # Build (from repo root):
 #   docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest --push docker/runpod-qwen3-tts/
 #
-# Image size: ~19GB (includes ~11GB model weights: CustomVoice + Base + VoiceDesign)
-# Cold start: ~30s (no model download needed)
+# Image size: ~8GB (model weights downloaded to /runpod-volume on first cold start, ~2min)
+# Cold start: ~2min on first start (model download), ~30s on warm starts
 #
 # Test locally:
 #   docker run --gpus all -p 8000:8000 ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest
@@ -28,24 +28,11 @@ RUN pip install --no-cache-dir \
 
 WORKDIR /app
 
-# Set HF cache location
-ENV HF_HOME=/root/.cache/huggingface
+# Models are downloaded at container startup into /runpod-volume (persisted across
+# warm starts on the same worker). Set HF_HOME to that path so huggingface_hub
+# and from_pretrained() both use the same cache location.
+ENV HF_HOME=/runpod-volume/huggingface
 ENV PYTHONUNBUFFERED=1
-
-# === BAKE MODELS INTO IMAGE ===
-# Download all three Qwen3-TTS models during build (~11GB total)
-RUN python -c "\
-from huggingface_hub import snapshot_download; \
-import os; \
-os.makedirs('/root/.cache/huggingface', exist_ok=True); \
-print('Downloading Qwen3-TTS CustomVoice model...'); \
-snapshot_download('Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice', cache_dir='/root/.cache/huggingface'); \
-print('Downloading Qwen3-TTS Base model...'); \
-snapshot_download('Qwen/Qwen3-TTS-12Hz-1.7B-Base', cache_dir='/root/.cache/huggingface'); \
-print('Downloading Qwen3-TTS VoiceDesign model...'); \
-snapshot_download('Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign', cache_dir='/root/.cache/huggingface'); \
-print('All three models downloaded successfully'); \
-"
 
 # Copy handler
 COPY handler.py /app/handler.py
