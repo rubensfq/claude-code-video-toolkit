@@ -147,7 +147,7 @@ def generate_audio(
     ref_text: str | None = None,
     design_instruct: str | None = None,   # if set → mode=voice_design
     output_format: str = "mp3",
-    timeout: int = 300,
+    timeout: int = 900,
     verbose: bool = True,
     temperature: float | None = None,
     top_p: float | None = None,
@@ -988,8 +988,8 @@ Examples:
     parser.add_argument(
         "--timeout",
         type=int,
-        default=300,
-        help="Job timeout in seconds (default: 300)",
+        default=900,
+        help="Job timeout in seconds (default: 900)",
     )
     parser.add_argument(
         "--setup",
