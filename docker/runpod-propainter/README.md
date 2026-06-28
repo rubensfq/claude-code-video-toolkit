@@ -9,7 +9,7 @@ Serverless GPU handler for video watermark removal using ProPainter AI inpaintin
 A public image is available on GitHub Container Registry:
 
 ```
-ghcr.io/conalmullan/video-toolkit-propainter:latest
+ghcr.io/rubensfq/video-toolkit-propainter:latest
 ```
 
 Skip to **Step 2: Deploy on RunPod** below.
@@ -30,7 +30,7 @@ Build takes ~15-20 minutes (downloads ~2GB of model weights).
 1. Go to [RunPod Serverless](https://www.runpod.io/console/serverless)
 2. Click **New Endpoint**
 3. Configure:
-   - **Docker Image**: `ghcr.io/conalmullan/video-toolkit-propainter:latest`
+   - **Docker Image**: `ghcr.io/rubensfq/video-toolkit-propainter:latest`
    - **GPU**: RTX 3090 or RTX 4090 (24GB VRAM recommended)
    - **Max Workers**: 1 (scale up as needed)
    - **Idle Timeout**: 5 seconds (fast scale-down)

@@ -3,10 +3,10 @@
 # Build locally (requires ~70GB disk):
 #   docker build -f Dockerfile.baked --platform linux/amd64 \
 #     --build-arg HF_TOKEN=hf_xxx \
-#     -t ghcr.io/conalmullan/video-toolkit-qwen-edit:baked .
+#     -t ghcr.io/rubensfq/video-toolkit-qwen-edit:baked .
 #
 # Push:
-#   docker push ghcr.io/conalmullan/video-toolkit-qwen-edit:baked
+#   docker push ghcr.io/rubensfq/video-toolkit-qwen-edit:baked
 #
 # Image size: ~55-60GB (models included)
 #

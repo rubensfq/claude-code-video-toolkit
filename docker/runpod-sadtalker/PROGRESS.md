@@ -75,8 +75,8 @@ git checkout experiment/sadtalker
 
 # Rebuild Docker image with numpy patches
 cd docker/runpod-sadtalker
-docker build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-sadtalker:latest .
-docker push ghcr.io/conalmullan/video-toolkit-sadtalker:latest
+docker build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-sadtalker:latest .
+docker push ghcr.io/rubensfq/video-toolkit-sadtalker:latest
 
 # Delete old endpoint/template and recreate
 python3 -c "
@@ -110,7 +110,7 @@ python3 tools/sadtalker.py --image /tmp/test_portrait.png --audio /tmp/test_audi
 ## Current RunPod Resources
 - **Endpoint ID:** `efkkbuyp7aupl8`
 - **Template ID:** `11dbptpqjo`
-- **Image:** `ghcr.io/conalmullan/video-toolkit-sadtalker:latest`
+- **Image:** `ghcr.io/rubensfq/video-toolkit-sadtalker:latest`
 
 ## Alternative Approaches to Try
 1. Use an older base image with numpy 1.x pre-installed

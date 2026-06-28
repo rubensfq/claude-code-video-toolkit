@@ -12,7 +12,7 @@ Reference Image -> [Qwen-Edit] -> Edited Frame -> [Wan I2V] -> Video Clip
 ### Option A: Use Pre-built Public Image (Recommended)
 
 ```
-ghcr.io/conalmullan/video-toolkit-qwen-edit:latest
+ghcr.io/rubensfq/video-toolkit-qwen-edit:latest
 ```
 
 Skip to **Step 2: Deploy on RunPod** below.
@@ -41,7 +41,7 @@ GHCR images are private by default. RunPod cannot pull private images.
 1. Go to [RunPod Serverless](https://www.runpod.io/console/serverless)
 2. Click **New Endpoint**
 3. Configure:
-   - **Docker Image**: `ghcr.io/conalmullan/video-toolkit-qwen-edit:latest`
+   - **Docker Image**: `ghcr.io/rubensfq/video-toolkit-qwen-edit:latest`
    - **GPU**: L4 24GB or RTX 4090 (24GB+ VRAM required)
    - **Max Workers**: 1 (scale up as needed)
    - **Idle Timeout**: 5 seconds (fast scale-down)

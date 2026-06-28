@@ -1,6 +1,6 @@
 # RunPod Serverless handler for FLUX.2 Klein 4B (models baked in)
 #
-# Build: docker buildx build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-flux2:latest --push .
+# Build: docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-flux2:latest --push .
 #
 # Image size: ~15GB (includes ~8GB model weights)
 # Cold start: ~30s (no model download needed)

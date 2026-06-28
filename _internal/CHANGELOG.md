@@ -97,7 +97,7 @@ All notable changes to claude-code-video-toolkit.
   - **8 scene presets** for video production: `corporate-bg`, `upbeat-tech`, `ambient`, `dramatic`, `tension`, `hopeful`, `cta`, `lofi`
   - **Brand-aware generation** — `--brand` loads style hints from brand.json
   - `--setup` creates RunPod template + endpoint via GraphQL
-  - Docker image: `ghcr.io/conalmullan/video-toolkit-acestep:latest` (CUDA 12.8, baked model weights)
+  - Docker image: `ghcr.io/rubensfq/video-toolkit-acestep:latest` (CUDA 12.8, baked model weights)
   - MIT licensed model — free alternative to ElevenLabs Music with more control
   - ~2-3s inference on GPU (turbo mode, 8 steps)
 - **ACE-Step skill** (`.claude/skills/acestep/`) — prompt engineering patterns, lyrics formatting, scene preset guide, video production integration
@@ -131,7 +131,7 @@ All notable changes to claude-code-video-toolkit.
   - Preset + prompt layering — preset provides style/mood, `--prompt` adds subject context
   - `--setup` creates RunPod template + endpoint via GraphQL
   - `--list-presets` shows all available scene presets
-  - Docker image: `ghcr.io/conalmullan/video-toolkit-flux2:latest` (baked model weights, ~15GB)
+  - Docker image: `ghcr.io/rubensfq/video-toolkit-flux2:latest` (baked model weights, ~15GB)
   - Apache 2.0 licensed model (commercial OK)
 - **"The Space Between"** — [showcase video](https://demos.digitalsamba.com/video/the-space-between.mp4) demonstrating end-to-end AI video creation
   - Avatar generated with flux2, voiced with Qwen3-TTS, animated with SadTalker, composed in Remotion
@@ -173,7 +173,7 @@ All notable changes to claude-code-video-toolkit.
 - **Qwen3-TTS integration** — Self-hosted TTS via RunPod as free alternative to ElevenLabs
   - `tools/qwen3_tts.py` standalone CLI with 9 speakers, tone presets, voice cloning
   - `voiceover.py --provider qwen3` for per-scene generation
-  - Docker image: `ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest`
+  - Docker image: `ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest`
   - Temperature/top_p params for expressiveness control
 - **`/voice-clone` command** — Record, test, and save a cloned voice to a brand profile
 - **`sprint-review-v2` template** — Composable scene-based architecture for sprint reviews

@@ -17,16 +17,16 @@ Generate speech from text with built-in voices, emotion control, and voice cloni
 docker build -t video-toolkit-qwen3-tts .
 
 # Tag for GHCR
-docker tag video-toolkit-qwen3-tts ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest
+docker tag video-toolkit-qwen3-tts ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest
 
 # Push to registry
-docker push ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest
+docker push ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest
 ```
 
 ## Deploy on RunPod
 
 1. Create a new serverless template with:
-   - Image: `ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest`
+   - Image: `ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest`
    - Container disk: 30GB
    - GPU: RTX 4090 24GB recommended (both models fit in ~12GB VRAM)
 

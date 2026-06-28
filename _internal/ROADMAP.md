@@ -112,7 +112,7 @@ An open-source, AI-native video production workspace for Claude Code, featuring:
 **Qwen3-TTS Integration:**
 - [x] `tools/qwen3_tts.py` — standalone CLI tool
 - [x] `voiceover.py --provider qwen3` — per-scene generation
-- [x] Docker image: `ghcr.io/conalmullan/video-toolkit-qwen3-tts:latest`
+- [x] Docker image: `ghcr.io/rubensfq/video-toolkit-qwen3-tts:latest`
 - [x] 9 built-in speakers, tone presets, voice cloning
 - [x] `/voice-clone` command — record, test, save cloned voice to brand
 - [x] Temperature/top_p generation params for expressiveness control

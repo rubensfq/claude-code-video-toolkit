@@ -1,6 +1,6 @@
 # RunPod Serverless handler for ACE-Step 1.5 Music Generation (models baked in)
 #
-# Build: docker buildx build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-acestep:latest --push .
+# Build: docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-acestep:latest --push .
 #
 # Image size: ~20GB (includes ~10GB model weights: DiT turbo + LM 1.7B + VAE + embedding)
 # Cold start: ~30-45s (no model download needed)

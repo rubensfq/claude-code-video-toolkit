@@ -1,6 +1,6 @@
 # RunPod Serverless handler for Qwen-Image-Edit with diffusers
 #
-# Build: docker buildx build --platform linux/amd64 -t ghcr.io/conalmullan/video-toolkit-qwen-edit:latest --push .
+# Build: docker buildx build --platform linux/amd64 -t ghcr.io/rubensfq/video-toolkit-qwen-edit:latest --push .
 #
 # Image size: ~8GB (models downloaded at runtime to network volume)
 #

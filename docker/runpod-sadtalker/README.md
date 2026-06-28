@@ -16,16 +16,16 @@ Generate talking head videos from a static image and audio.
 docker build -t video-toolkit-sadtalker .
 
 # Tag for GHCR
-docker tag video-toolkit-sadtalker ghcr.io/conalmullan/video-toolkit-sadtalker:latest
+docker tag video-toolkit-sadtalker ghcr.io/rubensfq/video-toolkit-sadtalker:latest
 
 # Push to registry
-docker push ghcr.io/conalmullan/video-toolkit-sadtalker:latest
+docker push ghcr.io/rubensfq/video-toolkit-sadtalker:latest
 ```
 
 ## Deploy on RunPod
 
 1. Create a new serverless template with:
-   - Image: `ghcr.io/conalmullan/video-toolkit-sadtalker:latest`
+   - Image: `ghcr.io/rubensfq/video-toolkit-sadtalker:latest`
    - Container disk: 20GB
    - GPU: RTX 4090 24GB recommended
 

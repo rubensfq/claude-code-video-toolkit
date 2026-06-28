@@ -193,8 +193,8 @@ Cloudflare R2 usage for dewatermark tool:
 
 ### Docker Package Namespace
 Move GPU worker images from personal to org namespace:
-- Currently: `ghcr.io/conalmullan/video-toolkit-*`
-- Target: `ghcr.io/digitalsamba/video-toolkit-*`
+- Currently: `ghcr.io/rubensfq/video-toolkit-*`
+- Target: `ghcr.io/rubensfq/video-toolkit-*`
 - Add OCI labels to Dockerfiles for auto-linking
 - Update CLAUDE.md and docs references
 - Packages: qwen-edit, realesrgan, propainter (+ animate, wan-i2v if used)

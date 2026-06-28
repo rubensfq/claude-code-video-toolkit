@@ -99,7 +99,7 @@ pipe(
 ```
 GPU: AMPERE_80 (A100 80GB) - can reduce to AMPERE_48 or L4
 Container Disk: 120GB
-Image: ghcr.io/conalmullan/video-toolkit-qwen-edit@sha256:...
+Image: ghcr.io/rubensfq/video-toolkit-qwen-edit@sha256:...
 ```
 
 ### Handler Pattern
