@@ -449,7 +449,9 @@ def handler(job: dict) -> dict:
         for i, wav_data in enumerate(wavs):
             base_name = f"output_{i}" if len(wavs) > 1 else "output"
             wav_path = work_dir / f"{base_name}.wav"
-            sf.write(str(wav_path), wav_data, sr)
+            import numpy as np
+            wav_np = wav_data.clone().cpu().numpy() if hasattr(wav_data, 'numpy') else np.array(wav_data)
+            sf.write(str(wav_path), wav_np, sr)
 
             if output_format == "mp3":
                 out_path = work_dir / f"{base_name}.mp3"
