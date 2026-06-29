@@ -285,6 +285,9 @@ def generate_custom_voice_batch(texts: list[str], speaker: str, languages: list[
     # Normalize: wavs is list for batch, single array for scalar
     if len(texts) == 1 and not isinstance(wavs, list):
         wavs = [wavs]
+    # Clone each tensor to avoid PyTorch tensor-aliasing bug (same as clone path)
+    import torch
+    wavs = [w.clone() if isinstance(w, torch.Tensor) else w for w in wavs]
     return list(wavs), sr
 
 
