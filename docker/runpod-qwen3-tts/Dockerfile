@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir torchaudio==2.4.0
 
 # Install qwen-tts and dependencies
 RUN pip install --no-cache-dir \
-    qwen-tts \
+    "qwen-tts==0.0.5" \
     soundfile \
     runpod \
     boto3 \
