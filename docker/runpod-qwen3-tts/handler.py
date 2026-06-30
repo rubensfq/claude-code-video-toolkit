@@ -88,6 +88,21 @@ import runpod
 import requests
 import soundfile as sf
 
+# Patch torch.Tensor.expand to return contiguous tensors.
+# PyTorch 2.4 added a strict check that raises "more than one element of the
+# written-to tensor refers to a single memory location" when an in-place op
+# targets an expanded (non-contiguous) view. The Qwen3-TTS model hits this
+# inside its inference pass. Patching expand() to always return a fresh
+# contiguous tensor avoids the aliasing without modifying the model code.
+try:
+    import torch as _torch
+    _orig_expand = _torch.Tensor.expand
+    def _safe_expand(self, *sizes, **kwargs):
+        return _orig_expand(self, *sizes, **kwargs).contiguous()
+    _torch.Tensor.expand = _safe_expand
+except Exception:
+    pass  # If patching fails, let the original error surface
+
 # Lazy-loaded global models (kept in GPU memory between requests)
 _custom_voice_model = None
 _base_model = None
